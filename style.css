@@ -1,0 +1,555 @@
+/* Brand Identity & Design Tokens (Inspired by Asociación Huella de Carbono - AHC) */
+:root {
+    --bg-primary: #ffffff;            /* tarjeta/superficie (EcoGestos --card) */
+    --bg-secondary: #F4F1E9;          /* fondo crema (EcoGestos --paper) */
+    --text-primary: #222A1A;          /* tinta (EcoGestos --ink) */
+    --text-secondary: #65705C;        /* texto apagado (EcoGestos muted) */
+    --accent-green: #4F9447; /* Verde de marca AHC oficial */
+    --accent-green-hover: #2F6D36; /* Verde de acción EcoGestos (--green-dark) */
+    --accent-green-light: #EAF1E6; /* Tinte verde claro EcoGestos */
+
+    --tag-high: #9B4D39; /* Acento óxido EcoGestos (--rust) */
+    --tag-medium: #C9893F; /* Acento ocre EcoGestos (--ochre) */
+    --tag-low: #4F9447; /* Verde de marca AHC */
+
+    --border-color: #E1D7C0;          /* borde cálido EcoGestos (--border) */
+    --border-card: #E1D7C0;           /* borde cálido EcoGestos (--border) */
+    --card-bg: #ffffff;
+    --shadow-natural: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 30px rgba(79, 148, 71, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    /* Tipografía AHC (homogeneizada con EcoGestos): Source Sans 3 para títulos, Nunito Sans para cuerpo */
+    --font-heading: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-ar: "Cairo", sans-serif;
+}
+
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Al saltar a #dashboard / #backlog, deja hueco bajo la cabecera fija
+   (si no, el título queda oculto debajo del header). */
+[id="dashboard"],
+[id="backlog"] {
+    scroll-margin-top: 130px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    background-image: linear-gradient(180deg, rgba(244, 241, 233, 0.6) 0%, rgba(255, 255, 255, 1) 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: var(--font-family), var(--font-ar), sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 60px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 1.8rem;
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--accent-green);
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-green);
+}
+
+/* Language Switcher Styling */
+.lang-switcher {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid var(--border-card);
+}
+
+.lang-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    color: var(--text-primary);
+}
+
+.lang-btn.active {
+    background-color: var(--accent-green);
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(79, 148, 71, 0.25);
+}
+
+/* Main Content Layout */
+.main-content {
+    max-width: 1200px;
+    margin: 110px auto 40px;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 40px 20px 30px;
+    background-image: linear-gradient(90deg, rgba(234, 241, 230, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Cards Section */
+.cards-section {
+    margin-top: 40px;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent-green);
+}
+
+/* AHC Brand Styled Card
+   La animación de entrada la gestiona un único sistema (.ahc-reveal en
+   custom-style.css). Aquí solo viven los estilos visuales de la tarjeta. */
+.course-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-card);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-natural);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79, 148, 71, 0.3);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-glow-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--accent-green);
+    /* Sigue las esquinas redondeadas de la tarjeta: sin "nubs" cuadrados.
+       Sin esto la barra recta asoma fuera del radio en las esquinas. */
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.card-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-icon-container {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    background: var(--accent-green-light);
+    border: 1px solid rgba(79, 148, 71, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-icon {
+    font-size: 1.6rem;
+}
+
+.card-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    align-self: flex-start;
+    margin-bottom: 12px;
+}
+
+.tag-high {
+    background: rgba(155, 77, 57, 0.1);
+    color: var(--tag-high);
+    border: 1px solid rgba(155, 77, 57, 0.15);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.card-instructor {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* Progress bar inside card */
+.progress-section {
+    margin-bottom: 25px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--accent-green);
+    border-radius: 4px;
+}
+
+/* Buttons */
+.btn-card {
+    background: transparent;
+    color: var(--accent-green);
+    border: 1.5px solid var(--accent-green);
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-card:hover {
+    background-color: var(--accent-green);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(79, 148, 71, 0.2);
+}
+
+/* Backlog Table Section */
+.backlog-section {
+    margin-top: 60px;
+}
+
+.table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid var(--border-card);
+    padding: 20px;
+    overflow-x: auto;
+    box-shadow: var(--shadow-natural);
+}
+
+.backlog-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: start;
+    min-width: 700px;
+}
+
+.backlog-table th {
+    padding: 15px 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.backlog-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.backlog-table tr:last-child td {
+    border-bottom: none;
+}
+
+.backlog-table tr:hover td {
+    color: var(--text-primary);
+    background: #F4F1E9;
+}
+
+.highlight-row {
+    background: rgba(79, 148, 71, 0.02);
+}
+
+.badge-type {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+}
+
+.priority {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.status-pending {
+    background: rgba(201, 137, 63, 0.08);
+    color: var(--tag-medium);
+    border: 1px solid rgba(201, 137, 63, 0.15);
+}
+
+.status-ready {
+    background: rgba(79, 148, 71, 0.08);
+    color: var(--tag-low);
+    border: 1px solid rgba(79, 148, 71, 0.15);
+}
+
+/* Modal Overlay Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-card {
+    background: #ffffff;
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 650px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--tag-high);
+}
+
+.modal-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.modal-tag {
+    background: var(--accent-green-light);
+    color: var(--accent-green);
+    border: 1px solid rgba(79, 148, 71, 0.2);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.modal-body {
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.modal-body h4 {
+    color: var(--text-primary);
+    margin: 20px 0 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.modal-body ul,
+.modal-body ol {
+    margin-inline-start: 25px;
+    margin-bottom: 15px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+}
+
+.modal-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.modal-body th,
+.modal-body td {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    text-align: start;
+    font-size: 0.9rem;
+}
+
+.modal-body th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* La animación de entrada y su fallback de reduced-motion viven en
+   custom-style.css (.ahc-reveal), sistema único de revelado. */
